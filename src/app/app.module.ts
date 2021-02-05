@@ -9,11 +9,13 @@ import { HelloComponent } from "./hello.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AdminComponent } from "./admin/admin.component";
 import { HomeComponent } from "./home/home.component";
+import { CowsService } from './cows.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   declarations: [AppComponent, HelloComponent, AdminComponent, HomeComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [CowsService]
   //providers: [AdminService],
 })
 export class AppModule {}

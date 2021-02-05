@@ -3,8 +3,54 @@
 </p>
 <table>
   <tr>
-    <td>
-      test
+    <td align="middle">
+      Home
       </td>
   </tr>
 </table>
+<div class="transparent_bg">
+      <div class="container">
+        <div class="search_pane"> 
+          <div class="search_box">
+            <select [(ngModel)]="selectedCowTag">
+              <option value="" disabled selected>from</option>
+              <option *ngFor ="let result of filteredCowTagList; let i=index" value={{result.CowTag}} >{{result.origin}}</option>
+            </select>
+          </div>
+          <div class="search_box">
+            <select [(ngModel)]="selectedBreed">
+              <option value="" disabled selected>to</option>
+              <option *ngFor ="let result of filteredBreedList; let i=index" value={{result.Breed}} >{{result.breed}}</option>
+            </select>
+          </div>
+          <div class="search_box">
+            <button (click)="getCowList()">Go</button>
+          </div>
+        </div>
+        <div class="flight_pane">  
+          <div class="flight_headers">
+            <div class="flight_number cell"> Flight # </div>
+            <div class="departs cell"> Departs </div>
+            <div class="arrives cell"> Arrives </div>
+            <div class="nonstop cell"> Nonstop </div>
+          </div>
+
+          <div *ngIf="noCowsFound">
+            -- no flights found -- 
+          </div>
+          
+          <div *ngFor="let cow of cows" class="cow_results">
+            <div class="cow_tag cell"> {{ CowTag }}</div>
+
+              <div class="cow_breed cell"> {{ breed }}</div>
+              <div class="cow_bred cell"> {{ bred }}</div>
+
+
+            
+          </div>
+          <div>
+          </div>
+          
+        </div>
+      </div>
+    </div>

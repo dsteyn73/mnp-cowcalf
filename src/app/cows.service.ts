@@ -2,6 +2,8 @@ import { Injectable, OnInit } from "@angular/core";
 import { CowsList } from "./cowslist.model";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { DBCows } from "./dbcows.interface";
+import { formatDate } from "@angular/common";
 
 @Injectable({
   providedIn: "root"
@@ -9,14 +11,26 @@ import { HttpClient } from "@angular/common/http";
 export class CowsService {
   db: boolean;
 
+  //Quickdata
+  Cow0: DBCows = { id: 1, breed: "Shorthorn", pasture: "South", cowtag: "P1",  dob: "03/15/16", bred: false };
+  Cow1: DBCows = { id: 2, breed: "Angus", pasture: "South", cowtag: "P2", dob: "3/10/20", bred: true };
+  Cow2: DBCows = { id: 3, breed: "Gelbviegh", pasture: "South", cowtag: "P3",dob: "3/28/19", bred: true };
+  Cow3: DBCows = { id: 4, breed: "Brockle", pasture: "joe", cowtag:"12", dob: "3/15/17", bred: true };
+
+  cows: DBCows[] = [this.Cow0, this.Cow1, this.Cow2, this.Cow3];
+
   constructor(private http: HttpClient) {
     this.backEndURL = this.getBackEndUrl();
   }
 
   backEndURL: string;
 
-  getCows(orig: string, dest: string): Observable<any> {
-    return this.http.get(`${this.backEndURL}/flights/query/${orig}/${dest}`);
+  getCowList() {
+    return this.cows;
+  }
+
+  getAllCows(cowtag: number, breed: string): Observable<any> {
+    return this.http.get(`${this.backEndURL}/cows/query/${cowtag}/${breed}`);
   }
 
   /*getFlights(orig: string, dest: string): Observable<any> {

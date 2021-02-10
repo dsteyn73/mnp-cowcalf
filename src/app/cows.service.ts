@@ -53,20 +53,24 @@ export class CowsService {
     this.backEndURL = this.getBackEndUrl();
   }
 
-  getCowList(): Observable<any> {
+  /*getCowList(): Observable<any> {
     //console.log(this.http.get(`${this.backEndURL}/home`));
 
     //return this.http.get(`${this.backEndURL}/home`);
     return this.http.get(
       "http://127.0.0.1:51710/?key=cbb6bb78-1920-42dc-bb7b-baa798425bbb"
     );
-  }
-  /*getCowList() {
+  }*/
+  getCowList() {
     return this.cows;
+  }
+
+  /*getAllCows(cowtag: number, breed: string): Observable<any> {
+    return this.http.get(`${this.backEndURL}/cows/query/${cowtag}/${breed}`);
   }*/
 
-  getAllCows(cowtag: number, breed: string): Observable<any> {
-    return this.http.get(`${this.backEndURL}/cows/query/${cowtag}/${breed}`);
+  getAllCows(cowtag: number, breed: string) {
+    return this.cows;
   }
 
   /*getFlights(orig: string, dest: string): Observable<any> {

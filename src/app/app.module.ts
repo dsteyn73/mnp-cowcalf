@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { HelloComponent } from "./hello.component";
-//import { AdminService } from './admin.service';
+//import { AdminService } from './admin/admin.service';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AdminComponent } from "./admin/admin.component";
@@ -16,6 +16,5 @@ import { CowsService } from './cows.service';
   declarations: [AppComponent, HelloComponent, AdminComponent, HomeComponent],
   bootstrap: [AppComponent],
   providers: [CowsService]
-  //providers: [AdminService],
 })
 export class AppModule {}

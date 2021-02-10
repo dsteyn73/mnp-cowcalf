@@ -19,15 +19,19 @@ export class CowsService {
 
   cows: DBCows[] = [this.Cow0, this.Cow1, this.Cow2, this.Cow3];
 
+  backEndURL: string;
+  
   constructor(private http: HttpClient) {
     this.backEndURL = this.getBackEndUrl();
   }
 
-  backEndURL: string;
-
-  getCowList() {
-    return this.cows;
+  getCowList(): Observable<any> {
+    
+    return this.http.get(`${this.backEndURL}/home`);
   }
+  /*getCowList() {
+    return this.cows;
+  }*/
 
   getAllCows(cowtag: number, breed: string): Observable<any> {
     return this.http.get(`${this.backEndURL}/cows/query/${cowtag}/${breed}`);
@@ -65,8 +69,12 @@ export class CowsService {
   getBackEndUrl(): string {
     const segements = document.URL.split("/");
     const reggie = new RegExp(/localhost/);
-    return reggie.test(segements[2])
-      ? "http://localhost:3002"
-      : "https://nestjs-typeorm-postgres.herokuapp.com";
+    const DBConn = "http://127.0.0.1:51710/?key=cbb6bb78-1920-42dc-bb7b-baa798425bbb"
+    return DBConn;
+    //return reggie.test(segements[2])
+      //? "http://localhost:3002"
+      //: "https://nestjs-typeorm-postgres.herokuapp.com";
+
+      //http://127.0.0.1:51710/?key=cbb6bb78-1920-42dc-bb7b-baa798425bbb
   }
 }

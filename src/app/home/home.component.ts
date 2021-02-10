@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit {
   constructor(private cowsService: CowsService) { }
 
   getCowList(): void{
-    alert('this is getCowList');
-    //this.cowsService.getCowList();
+    //alert('this is getCowList');
+    this.cowsService.getCowList();
 
 
   }

@@ -55,6 +55,8 @@ export class HomeComponent implements OnInit {
     */
 
   ngOnInit() : void {
-    this.cowsService.getCowList(); 
+    //this.cowsService.getCowList(); 
+    this.cowsService.getCowList().subscribe(data=>{this.cows = data;
+    })
   }
 }
